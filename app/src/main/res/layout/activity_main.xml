@@ -13,4 +13,11 @@
         android:text="Họ tên: Võ Quốc Khánh\nMã sinh viên: 2415053122121\nLớp HP: 24T1"
         android:textSize="16sp" />
 
+    <EditText
+        android:id="@+id/edtTenCongViec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Nhập tên công việc"
+        android:inputType="text" />
 </LinearLayout>
