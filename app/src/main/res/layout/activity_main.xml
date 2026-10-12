@@ -35,4 +35,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Tạo công việc" />
+
+    <Button
+        android:id="@+id/btnXemDanhSach"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Xem danh sách công việc" />
 </LinearLayout>
