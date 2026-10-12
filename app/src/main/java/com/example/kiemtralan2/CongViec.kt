@@ -5,11 +5,16 @@ import java.io.Serializable
 class CongViec(
     var tenCongViec: String,
     var moTa: String,
-    var trangThai: Boolean = false
+    var trangThai: Boolean = false,
+    var maCongViec: String = ""
 ) : Serializable {
 
+    fun laDaHoanThanh(): Boolean {
+        return trangThai
+    }
+
     fun layThongTin(): String {
-        val chuoiTrangThai = if (trangThai) "Đã hoàn thành" else "Chưa hoàn thành"
-        return "Công việc: $tenCongViec\nMô tả: $moTa\nTrạng thái: $chuoiTrangThai"
+        val chuoiTrangThai = if (laDaHoanThanh()) "Đã hoàn thành" else "Chưa hoàn thành"
+        return "Mã: $maCongViec\nCông việc: $tenCongViec\nMô tả: $moTa\nTrạng thái: $chuoiTrangThai"
     }
 }
