@@ -25,7 +25,12 @@ class MainActivity : AppCompatActivity() {
         val btnTaoCongViec = findViewById<Button>(R.id.btnTaoCongViec)
 
         btnTaoCongViec.setOnClickListener {
-            val congViec = CongViec(edtTenCongViec.text.toString(), edtMoTaCongViec.text.toString())
+            val tenCongViec = edtTenCongViec.text.toString().trim()
+            if (tenCongViec.isEmpty()) {
+                edtTenCongViec.error = "Tên công việc không được để trống"
+                return@setOnClickListener
+            }
+            val congViec = CongViec(tenCongViec, edtMoTaCongViec.text.toString())
             val intent = Intent(this, ChiTietCongViecActivity::class.java)
             intent.putExtra("cong_viec", congViec)
             startActivity(intent)
