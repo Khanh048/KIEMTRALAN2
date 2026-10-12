@@ -33,6 +33,8 @@ class ChiTietCongViecActivity : AppCompatActivity() {
         tvTenCongViec.text = congViec.tenCongViec
         tvMoTaCongViec.text = congViec.moTa
         tvThongTin.text = congViec.layThongTin()
+        findViewById<TextView>(R.id.tvTrangThai).text =
+            if (congViec.trangThai) "Trạng thái: Đã hoàn thành" else "Trạng thái: Chưa hoàn thành"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +53,11 @@ class ChiTietCongViecActivity : AppCompatActivity() {
 
         congViec = intent.getSerializableExtra("cong_viec") as? CongViec ?: CongViec("", "")
         hienThi()
+
+        findViewById<Button>(R.id.btnHoanThanh).setOnClickListener {
+            congViec.trangThai = true
+            hienThi()
+        }
 
         findViewById<Button>(R.id.btnChinhSua).setOnClickListener {
             val intentChinhSua = Intent(this, ChinhSuaCongViecActivity::class.java)
