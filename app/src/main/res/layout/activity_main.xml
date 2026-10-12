@@ -20,4 +20,12 @@
         android:layout_marginTop="16dp"
         android:hint="Nhập tên công việc"
         android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edtMoTaCongViec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập mô tả công việc"
+        android:inputType="textMultiLine"
+        android:minLines="3" />
 </LinearLayout>
