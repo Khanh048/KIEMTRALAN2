@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
         val btnTaoCongViec = findViewById<Button>(R.id.btnTaoCongViec)
 
         btnTaoCongViec.setOnClickListener {
+            val congViec = CongViec(edtTenCongViec.text.toString(), edtMoTaCongViec.text.toString())
             val intent = Intent(this, ChiTietCongViecActivity::class.java)
-            intent.putExtra("ten_cong_viec", edtTenCongViec.text.toString())
-            intent.putExtra("mo_ta", edtMoTaCongViec.text.toString())
+            intent.putExtra("cong_viec", congViec)
             startActivity(intent)
         }
     }

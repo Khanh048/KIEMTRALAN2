@@ -11,15 +11,20 @@ class ChinhSuaCongViecActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chinh_sua_cong_viec)
 
+        val congViec = intent.getSerializableExtra("cong_viec") as? CongViec ?: CongViec("", "")
         val edtTenMoi = findViewById<EditText>(R.id.edtTenMoi)
         val edtMoTaMoi = findViewById<EditText>(R.id.edtMoTaMoi)
-        edtTenMoi.setText(intent.getStringExtra("ten_cong_viec"))
-        edtMoTaMoi.setText(intent.getStringExtra("mo_ta"))
+        edtTenMoi.setText(congViec.tenCongViec)
+        edtMoTaMoi.setText(congViec.moTa)
 
         findViewById<Button>(R.id.btnLuu).setOnClickListener {
+            val capNhat = CongViec(
+                edtTenMoi.text.toString(),
+                edtMoTaMoi.text.toString(),
+                congViec.trangThai
+            )
             val ketQua = Intent()
-            ketQua.putExtra("ten_cong_viec", edtTenMoi.text.toString())
-            ketQua.putExtra("mo_ta", edtMoTaMoi.text.toString())
+            ketQua.putExtra("cong_viec", capNhat)
             setResult(RESULT_OK, ketQua)
             finish()
         }

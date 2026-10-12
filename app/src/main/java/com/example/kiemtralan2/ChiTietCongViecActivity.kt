@@ -14,15 +14,25 @@ class ChiTietCongViecActivity : AppCompatActivity() {
 
     private lateinit var tvTenCongViec: TextView
     private lateinit var tvMoTaCongViec: TextView
+    private lateinit var tvThongTin: TextView
+    private lateinit var congViec: CongViec
 
     private val trinhMoChinhSua = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { ketQua ->
         if (ketQua.resultCode == RESULT_OK) {
-            tvTenCongViec.text = ketQua.data?.getStringExtra("ten_cong_viec") ?: ""
-            tvMoTaCongViec.text = ketQua.data?.getStringExtra("mo_ta") ?: ""
+            val congViecMoi = ketQua.data?.getSerializableExtra("cong_viec") as? CongViec
+            if (congViecMoi != null) {
+                congViec = congViecMoi
+                hienThi()
+            }
         }
+    }
 
+    private fun hienThi() {
+        tvTenCongViec.text = congViec.tenCongViec
+        tvMoTaCongViec.text = congViec.moTa
+        tvThongTin.text = congViec.layThongTin()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,14 +47,14 @@ class ChiTietCongViecActivity : AppCompatActivity() {
 
         tvTenCongViec = findViewById(R.id.tvTenCongViec)
         tvMoTaCongViec = findViewById(R.id.tvMoTaCongViec)
+        tvThongTin = findViewById(R.id.tvThongTin)
 
-        tvTenCongViec.text = intent.getStringExtra("ten_cong_viec") ?: ""
-        tvMoTaCongViec.text = intent.getStringExtra("mo_ta") ?: ""
+        congViec = intent.getSerializableExtra("cong_viec") as? CongViec ?: CongViec("", "")
+        hienThi()
 
         findViewById<Button>(R.id.btnChinhSua).setOnClickListener {
             val intentChinhSua = Intent(this, ChinhSuaCongViecActivity::class.java)
-            intentChinhSua.putExtra("ten_cong_viec", tvTenCongViec.text.toString())
-            intentChinhSua.putExtra("mo_ta", tvMoTaCongViec.text.toString())
+            intentChinhSua.putExtra("cong_viec", congViec)
             trinhMoChinhSua.launch(intentChinhSua)
         }
     }

@@ -31,6 +31,13 @@
         android:layout_height="wrap_content"
         android:textSize="18sp" />
 
+    <TextView
+        android:id="@+id/tvThongTin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp" />
+
     <Button
         android:id="@+id/btnChinhSua"
         android:layout_width="match_parent"
