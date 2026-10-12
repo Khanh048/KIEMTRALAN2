@@ -18,7 +18,11 @@ class ChiTietCongViecActivity : AppCompatActivity() {
     private val trinhMoChinhSua = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { ketQua ->
-        // Buoc 4 xu ly ket qua o day
+        if (ketQua.resultCode == RESULT_OK) {
+            tvTenCongViec.text = ketQua.data?.getStringExtra("ten_cong_viec") ?: ""
+            tvMoTaCongViec.text = ketQua.data?.getStringExtra("mo_ta") ?: ""
+        }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
