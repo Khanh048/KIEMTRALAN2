@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -62,9 +63,15 @@ class ChiTietCongViecActivity : AppCompatActivity() {
         congViec = intent.getSerializableExtra("cong_viec") as? CongViec ?: CongViec("", "")
         hienThi()
 
-        findViewById<Button>(R.id.btnHoanThanh).setOnClickListener {
-            congViec.trangThai = true
-            hienThi()
+        val btnHoanThanh = findViewById<Button>(R.id.btnHoanThanh)
+        btnHoanThanh.setOnClickListener {
+            if (congViec.laDaHoanThanh()) {
+                Toast.makeText(this, "Công việc đã hoàn thành rồi", Toast.LENGTH_SHORT).show()
+            } else {
+                congViec.trangThai = true
+                hienThi()
+                Toast.makeText(this, "Đã cập nhật trạng thái hoàn thành", Toast.LENGTH_SHORT).show()
+            }
         }
 
         findViewById<Button>(R.id.btnChinhSua).setOnClickListener {
