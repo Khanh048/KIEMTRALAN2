@@ -12,9 +12,11 @@ import androidx.core.view.WindowInsetsCompat
 
 class ChiTietCongViecActivity : AppCompatActivity() {
 
+    private lateinit var tvMaCongViec: TextView
     private lateinit var tvTenCongViec: TextView
     private lateinit var tvMoTaCongViec: TextView
     private lateinit var tvThongTin: TextView
+    private lateinit var tvTrangThai: TextView
     private lateinit var congViec: CongViec
 
     private val trinhMoChinhSua = registerForActivityResult(
@@ -30,11 +32,15 @@ class ChiTietCongViecActivity : AppCompatActivity() {
     }
 
     private fun hienThi() {
+        tvMaCongViec.text = "Mã công việc: ${congViec.maCongViec}"
         tvTenCongViec.text = congViec.tenCongViec
         tvMoTaCongViec.text = congViec.moTa
         tvThongTin.text = congViec.layThongTin()
-        findViewById<TextView>(R.id.tvTrangThai).text =
-            if (congViec.trangThai) "Trạng thái: Đã hoàn thành" else "Trạng thái: Chưa hoàn thành"
+        tvTrangThai.text = if (congViec.laDaHoanThanh()) {
+            "Trạng thái: Đã hoàn thành"
+        } else {
+            "Trạng thái: Chưa hoàn thành"
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,9 +53,11 @@ class ChiTietCongViecActivity : AppCompatActivity() {
             insets
         }
 
+        tvMaCongViec = findViewById(R.id.tvMaCongViec)
         tvTenCongViec = findViewById(R.id.tvTenCongViec)
         tvMoTaCongViec = findViewById(R.id.tvMoTaCongViec)
         tvThongTin = findViewById(R.id.tvThongTin)
+        tvTrangThai = findViewById(R.id.tvTrangThai)
 
         congViec = intent.getSerializableExtra("cong_viec") as? CongViec ?: CongViec("", "")
         hienThi()

@@ -32,7 +32,8 @@ class MainActivity : AppCompatActivity() {
                 edtTenCongViec.error = "Tên công việc không được để trống"
                 return@setOnClickListener
             }
-            val congViec = CongViec(tenCongViec, edtMoTaCongViec.text.toString())
+            val maCongViec = "CV" + (1000..9999).random()
+            val congViec = CongViec(tenCongViec, edtMoTaCongViec.text.toString(), false, maCongViec)
             val intent = Intent(this, ChiTietCongViecActivity::class.java)
             intent.putExtra("cong_viec", congViec)
             startActivity(intent)

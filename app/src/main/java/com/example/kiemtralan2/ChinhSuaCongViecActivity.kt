@@ -21,7 +21,8 @@ class ChinhSuaCongViecActivity : AppCompatActivity() {
             val capNhat = CongViec(
                 edtTenMoi.text.toString(),
                 edtMoTaMoi.text.toString(),
-                congViec.trangThai
+                congViec.trangThai,
+                congViec.maCongViec
             )
             val ketQua = Intent()
             ketQua.putExtra("cong_viec", capNhat)

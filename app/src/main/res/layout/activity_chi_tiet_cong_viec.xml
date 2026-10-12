@@ -7,6 +7,14 @@
     android:padding="16dp">
 
     <TextView
+        android:id="@+id/tvMaCongViec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tên công việc:"
@@ -38,7 +46,6 @@
         android:layout_marginTop="16dp"
         android:textSize="16sp" />
 
-
     <TextView
         android:id="@+id/tvTrangThai"
         android:layout_width="match_parent"
@@ -52,13 +59,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Đánh dấu đã hoàn thành" />
+        android:text="Hoàn thành" />
 
     <Button
         android:id="@+id/btnChinhSua"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Chỉnh sửa" />
 
 </LinearLayout>
